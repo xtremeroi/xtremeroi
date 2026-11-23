@@ -118,9 +118,13 @@ A portal where a company's contractors submit invoices and expenses and admins a
 - **No bank numbers stored.** The portal records the payout method only. Account details are collected separately.
 - **Batch exports.** Approved items download as files ready for each payment method.
 
+### talkandtext.ai: booking by text
+
+Our own product for local service businesses. Customers text the business, pick a service and a time, and get a confirmation back, with no phone call and no app. It is the booking layer on the Pro MBL site below.
+
 ### Client websites
 
-**[mbldetail.com](https://mbldetail.com/)**: Pro MBL Auto Detail, a mobile detailing and ceramic coating business in San Diego. A full site that replaced a template builder page: an AI concierge that answers visitor questions, a button that drafts the customer's booking text for them, booking by text message, real pricing by vehicle size, a before-and-after slider, and a gallery of the shop's own work.
+**[mbldetail.com](https://mbldetail.com/)**: Pro MBL Auto Detail, a mobile detailing and ceramic coating business in San Diego. A full site that replaced a template builder page: an AI concierge that answers visitor questions, a button that drafts the customer's booking text for them, booking by text message through our own talkandtext.ai, real pricing by vehicle size, a before-and-after slider, and a gallery of the shop's own work.
 
 **[jardininfusions.com](https://jardininfusions.com/pages/lavender-cocktails)**: Jardin Infusions, a botanical drink elixir brand. Landing pages inside the brand's Shopify store for its Pinterest campaigns. Each pin opens the page on the exact recipe the visitor clicked, with the product and a multi-pack offer beside it. We also built design directions for the storefront for the owner to review.
 
