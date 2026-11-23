@@ -34,6 +34,13 @@ The platform our team works in all day. It ingests advertising data for every cl
 - Live intraday signals per client and a fleet board for managers
 - A data auditor ("The Judge") and a verification layer that check each KPI against its sources
 - Time tracking, timesheets, payroll support and invoicing in the same app
+- Direct API connections in place of hand-downloaded reports:
+  - Amazon Ads API for scheduled reporting, live budget and serving status every five minutes, invoices, and approved bid, budget and keyword changes
+  - Amazon Marketing Stream for hourly performance pushed by Amazon
+  - Amazon Selling Partner API (Brand Analytics) for Seller Central sales and traffic
+  - A vendor data feed delivered to our own cloud storage bucket, Google Drive for client files, and connections to market research, accounting and chat tools
+- One credential rule: the advertising keys live only inside the server. No agent, script or prompt is ever handed them. Agents get a read-only feed, a gated write path, or the connector below.
+- Python scripts that run outside the platform as a second line of defense: a nightly backup of everything that cannot be rebuilt, a dead-man's switch that checks from the outside whether the weekly data job produced its files, a completeness check that learns each client's expected files from that client's own history, and a helper that turns agent answers into clean import files
 - An MCP connector so Claude can read the analysis, generate reports and make approved ad changes
 - Companion apps: a macOS menu bar punch clock, a Chrome extension, and iPhone apps for staff time and manager approvals
 
