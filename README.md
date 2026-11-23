@@ -71,7 +71,7 @@ A weekly dashboard that reconciles two attribution vendors against platform-dire
 
 ### Agents that operate ad platforms
 
-Reusable Claude skills that carry out approved recommendations in an ad management tool's web interface, build new campaigns from client creatives and stop before launch, and publish client reports. A separate planning agent proposes changes and waits for approval.
+Reusable Claude skills that carry out approved recommendations in Perpetua's web interface, build new campaigns from client creatives and stop before launch, and publish client reports. A separate planning agent proposes changes and waits for approval.
 
 ### Rooms: people and agents in one conversation
 
