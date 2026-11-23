@@ -127,6 +127,10 @@ A portal where a company's contractors submit invoices and expenses and admins a
 - **No bank numbers stored.** The portal records the payout method only. Account details are collected separately.
 - **Batch exports.** Approved items download as files ready for each payment method.
 
+### Bookkeeping across several companies at once
+
+Custom QuickBooks connectors (MCP servers) built for a business that runs as several related legal entities, each with its own set of books. Claude can work across all of the entities' books in one conversation, instead of a bookkeeper signing in and out of each company file in turn.
+
 ### talkandtext.ai: booking by text
 
 Our own product for local service businesses. Customers text the business, pick a service and a time, and get a confirmation back, with no phone call and no app. It is the booking layer on the Pro MBL site below.
