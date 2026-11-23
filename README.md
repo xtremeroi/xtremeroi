@@ -68,11 +68,37 @@ Reusable Claude skills that carry out approved recommendations in an ad manageme
 
 A standalone shared-room service where staff and their AI assistants work together. Messages from other people or agents are treated as information only. An agent acts only on its own user's approved instruction.
 
-### Private voice and local models
+### Local models on two NVIDIA DGX Sparks
 
-- Push-to-talk dictation for the Mac, transcribed on our own hardware so nothing leaves the network
-- A local model stack on in-house GPU machines, with sandboxed coding agents and a task router
-- A private benchmark site where every model is tested before it gets a job
+For work that should never leave the building, we run open-weight models on our own hardware: two DGX Sparks and a small fleet of Macs on a private network.
+
+- **Setup and serving.** Both Sparks configured headless, serving large open models through vLLM and llama.cpp, each on its own or joined to run one larger model across the pair. Endpoints are reachable only on the private network, with keys held by a relay so no agent ever sees them.
+- **Benchmarks before trust.** Every model runs a fixed suite of public tests (IFEval, IFBench, SimpleQA Verified, BFCL and others) before it is given a job. Results go to a private site with a live board of tests in progress, and a daily scout proposes newer tests for the owner to authorize.
+- **Real jobs moved off the cloud.** Scheduled mail sweeps, daily reviews, report drafting and question answering now run on local models. A watcher alerts when a job misses its run.
+- **Sandboxed agents.** Local coding agents work inside NVIDIA OpenShell sandboxes with a written network policy. We measured the cost: about 0% overhead for a single agent and about 5% with four running at once. Their output is reviewed before it is staged.
+- **Operations.** Memory guards, scheduled model swaps, and one status card showing what each machine is serving.
+
+The two-Spark model builds follow community recipes, credited to their authors.
+
+### Private voice
+
+Push-to-talk dictation for the Mac, transcribed on our own hardware so nothing leaves the network. The same service transcribes recorded calls into meeting notes.
+
+### Guardrails for a high-stakes agent: a trading sandbox
+
+A personal research project, included here for its controls. It is not a service we offer, and we publish no positions or results.
+
+An open-weight model on the Sparks writes and maintains strategy code for the owner's own accounts on a regulated exchange. The question we built it to answer: how do you let a model write code that touches real money without trusting the model?
+
+- **The model never holds credentials.** It works in a sandbox whose only exits are the model endpoint and a single gate. Direct access to the exchange, the internet, package registries and local secrets was tested and confirmed blocked.
+- **Proposals are hashed.** Each change is a packet of a written proposal plus code. The site shows the owner the exact text and fingerprints the exact bytes.
+- **Independent review.** Three different models must each approve the same fingerprinted packet, and tests must pass against it. A conditional yes, a missing answer or a review of an earlier version does not count.
+- **Two owner decisions.** Approving a strategy does not authorize deploying it. Each is a separate signed decision on a private, authenticated site.
+- **The gate checks everything again.** Before deploying, it confirms the receipt is the owner's, unused, unexpired and matches the current bytes, and that no later hold or rejection exists. Any edit after approval voids the approval.
+- **Failure reverts.** The gate applies the change as a patch, runs the packet's tests and confirms the service restarted. Any failure rolls it back.
+- **Read-only where possible.** Brokerage data is a read-only snapshot. Every decision and deployment is written to a ledger.
+
+The same pattern fits any agent whose mistakes are expensive: payments, payroll, pricing, or changes to customer records.
 
 ### Small utilities
 
@@ -87,7 +113,7 @@ Interactive pitch apps for prospects, landing pages, and full small-business web
 
 ## Built with
 
-Claude Code, Claude skills and MCP connectors, Cloudflare Workers (KV, D1, R2, Durable Objects, Access), Next.js, three.js, Swift and SwiftUI, Electron, Python, and local models served on in-house hardware. We also use OpenAI Codex and open-weight models where they fit, and test them side by side.
+Claude Code, Claude skills and MCP connectors, Cloudflare Workers (KV, D1, R2, Durable Objects, Access), Next.js, three.js, Swift and SwiftUI, Electron, Python, and open-weight models served with vLLM, llama.cpp and Ollama on NVIDIA DGX Sparks and Apple silicon. We also use OpenAI Codex and open-weight models where they fit, and test them side by side.
 
 ## Public repositories
 
