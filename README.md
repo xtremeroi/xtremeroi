@@ -107,9 +107,28 @@ The same pattern fits any agent whose mistakes are expensive: payments, payroll,
 - Cost, backup and security watchers that report to the Command Center
 - Home and office controls with signed requests and owner-only approvals
 
-### Websites and pitch apps
+### Contractor invoicing and payout approvals
 
-Interactive pitch apps for prospects, landing pages, and full small-business websites, each built and deployed in days.
+A portal where a company's contractors submit invoices and expenses and admins approve them for payment by ACH, Zelle or Wise. Built for two separate businesses from one design. The portal tracks and approves payouts; the money itself moves through the bank or payment service.
+
+- **Invite only.** Admins issue single-use activation codes that expire.
+- **Verified before paid.** A contractor cannot invoice until an admin has their tax form on file and has set them up as a payee.
+- **Changes re-lock the account.** Editing payout details pauses invoicing until an admin verifies them again.
+- **Two people on every payment.** One admin approves an item and a different admin marks it paid.
+- **No bank numbers stored.** The portal records the payout method only. Account details are collected separately.
+- **Batch exports.** Approved items download as files ready for each payment method.
+
+### Client websites
+
+**[mbldetail.com](https://mbldetail.com/)**: Pro MBL Auto Detail, a mobile detailing and ceramic coating business in San Diego. A full site that replaced a template builder page: an AI concierge that answers visitor questions, a button that drafts the customer's booking text for them, booking by text message, real pricing by vehicle size, a before-and-after slider, and a gallery of the shop's own work.
+
+**[jardininfusions.com](https://jardininfusions.com/pages/lavender-cocktails)**: Jardin Infusions, a botanical drink elixir brand. Landing pages inside the brand's Shopify store for its Pinterest campaigns. Each pin opens the page on the exact recipe the visitor clicked, with the product and a multi-pack offer beside it. We also built design directions for the storefront for the owner to review.
+
+**[simpletics.com](https://simpletics.com/)**: Simpletics, a men's hair care brand. Ongoing AI development: connecting Claude to the brand's advertising platforms through the platforms' official connectors, under a dedicated account with its own limited access, with a person approving any budget or spend change. Also landing page concepts built for testing.
+
+### Pitch apps
+
+Interactive pitch apps and private growth plans for prospects, each a small gated site built around that prospect's own numbers.
 
 ## Built with
 
