@@ -153,13 +153,14 @@ Before proposing any change to how the same business pays contractors, we had Cl
 
 ### Bookkeeping across several companies at once
 
-Custom QuickBooks connectors (MCP servers) built for a business that runs as several related legal entities, each with its own set of books. Claude can work across all of the entities' books in one conversation, instead of a bookkeeper signing in and out of each company file in turn. The connectors run on the business's own server.
+Custom QuickBooks connectors (MCP servers) built for a business that runs as four related legal entities, each with its own set of books. Claude can work across all four sets of books in one conversation, instead of a bookkeeper signing in and out of each company file in turn. The connectors run on the business's own server and are used on demand, whenever a question or a task comes up.
 
 - **One connector per company, never a switch.** Which company a request reaches is decided by which connector is called, not by a setting inside the request, so a mistyped value cannot send an entry to the wrong set of books.
 - **Reading and writing are separate connectors.** Each company has a read-only connector and a write connector. An assistant can be given one company's reports without any ability to change that company's books, and write access is granted company by company.
 - **Full read coverage.** Profit and loss, balance sheet, cash flow, trial balance, general ledger, aged receivables and payables, plus lookup and search across every record type, from invoices and bills to journal entries, transfers and attachments.
 - **Create and update, no delete.** The write connectors can create and update records such as invoices, bills, payments, deposits, transfers and journal entries. They have no delete or void tools.
-- **Credentials stay with the connector.** The assistant never sees a QuickBooks login.
+- **The owner approves every write.** Nothing is posted to any company's books without the owner's yes.
+- **Credentials stay with the connector.** The assistant never sees a QuickBooks login, and the connectors sit behind a Google sign-in.
 - **Cross-company work is done by the assistant.** It calls each company's connector in turn and combines the results, for example to compare the same vendor or the same month across all of the companies.
 
 ### talkandtext.ai: booking by text
