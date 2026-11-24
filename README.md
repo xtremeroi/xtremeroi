@@ -2,6 +2,8 @@
 
 We help small businesses put AI agents to work in their day-to-day operations.
 
+**[www.xtremeroi.ai](https://www.xtremeroi.ai)**: see the work, describe your business and watch an AI draft your agents, or book a walkthrough.
+
 We did it to our own company first. XTREME ROI is an Amazon advertising agency, and over the past year we rebuilt how the agency runs around AI agents: reporting, account monitoring, client deliverables, time tracking, invoicing, lead generation and internal communication. Everything below is software we built with Claude Code and other AI coding tools, and that our team uses every working day.
 
 Most of the code is private because it carries client data. This page describes what exists and how it works. We are glad to walk through any of it live.
@@ -189,4 +191,4 @@ Claude Code, Claude skills and MCP connectors, Cloudflare Workers (KV, D1, R2, D
 
 ## Work with us
 
-If you run a small business and want to know which parts of it an agent could take over, start with a conversation: [xtremeroi.com](https://xtremeroi.com)
+If you run a small business and want to know which parts of it an agent could take over, start with a conversation: book a walkthrough at [xtremeroi.ai](https://www.xtremeroi.ai). For Amazon advertising and marketplace work, visit [xtremeroi.com](https://xtremeroi.com).
