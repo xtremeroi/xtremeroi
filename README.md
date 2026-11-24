@@ -75,7 +75,13 @@ Reusable Claude skills that carry out approved recommendations in Perpetua's web
 
 ### Rooms: people and agents in one conversation
 
-A standalone shared-room service where staff and their AI assistants work together. Messages from other people or agents are treated as information only. An agent acts only on its own user's approved instruction.
+A standalone shared-room service where staff and their AI assistants work together. Messages from other people or agents are treated as information only. An agent acts only on its own user's approved instruction. It runs as one MCP server plus a small web panel, and is deployed separately for two organizations.
+
+- **Sign-in decides who you are, the server decides what you may do.** Claude connects with a standard sign-in through the company's identity provider. Each person's seat is locked to one agent name and is checked again on every call, so removing someone cuts them off at once.
+- **Approvals live in one place.** An agent can only request an approval. Approve and deny exist only on the owner's panel, and the owner gets an alert with a link straight to the room.
+- **Limits enforced by the server, not by the prompt.** A turn cap pauses a room that runs long, posts that look like secrets are refused, and idle rooms close on their own.
+- **Unattended agents** (scripts, headless machines) use a token that can act only as its one agent name.
+- **Tested with two scripted agents** that check ordering under concurrent posts, the turn cap, the secret filter, membership rules and the full approval round trip.
 
 ### Local models on two NVIDIA DGX Sparks
 
@@ -126,6 +132,24 @@ A portal where a company's contractors submit invoices and expenses and admins a
 - **Two people on every payment.** One admin approves an item and a different admin marks it paid.
 - **No bank numbers stored.** The portal records the payout method only. Account details are collected separately.
 - **Batch exports.** Approved items download as files ready for each payment method.
+
+For one of the two businesses the portal replaced a WordPress site that had been running for three years:
+
+- **Rebuilt, not redesigned.** We inventoried the old site's pages and forms, exported every form and entry through the site's own tools, and rebuilt each page to match, so contractors had nothing new to learn.
+- **History carried over.** 107 contractor accounts, about 1,700 invoices and expenses, and the receipt files moved to the new portal.
+- **Two data bugs found in the migration.** The old form's calculator had corrupted the totals on 156 invoices, and a hidden character in the export had blanked every first name. Both were repaired.
+- **Nothing left to patch.** The old site was three major versions behind with about 20 plugins, next to a payment process. The new one is a single Cloudflare Worker with a database, file storage, hashed passwords, a strict content security policy and an audit log.
+- **A payment trail.** The old site never recorded whether an invoice was paid. Finance now works a queue and marks each item paid with the payment platform's transaction number.
+- **Changed by asking.** Channels, page copy, users and reports are changed by prompting Claude. There is no admin dashboard to maintain.
+
+### Mapping how money moves before changing it
+
+Before proposing any change to how the same business pays contractors, we had Claude trace one invoice through every system it touches: the portal, the contractor payment platform, the bank, the accounting ledger and a reconciliation spreadsheet. Everything was read-only, and the one approval in the walkthrough was clicked by the owner.
+
+- **A written record of the real mechanism.** The old integration turned out to be custom code that nobody had documented. We wrote down exactly what it sent, how payees were matched, and what was never recorded.
+- **A cost comparison from the business's own records.** A decision deck for the owners compared four ways of paying the same people, using the portal's invoice history, the ledger and the vendor contract, with the contract's exit terms and a risk table.
+- **Controls designed in.** The proposal adds a manager sign-off before finance, one payment per invoice for exactly the approved amount, a batch that refuses to export if it does not reconcile, and a daily exception report.
+- **A staged rollout.** Pilot with volunteers while the current system keeps running, and never change the invoicing screen and the payment method in the same month.
 
 ### Bookkeeping across several companies at once
 
